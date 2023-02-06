@@ -1,0 +1,42 @@
+@use "../components/aside.scss";
+@use "../utils/colors" as clr;
+@use "../utils/mixins" as mxn;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: clr.$primary__clr;
+  font-family: "Rajdhani", sans-serif;
+  color: rgba(white, 0.95);
+  @include mxn.flex-center(row);
+  justify-content: space-between;
+  form {
+    @include mxn.flex-center(column);
+    justify-content: space-between;
+    padding-block: 4rem;
+    height: 100%;
+    width: 100%;
+    input,
+    button {
+      width: 60%;
+      padding: 1rem;
+      outline: none;
+      border: 1px solid clr.$secondary__clr__light;
+      background: rgba(white, 0.15);
+      font-size: 1.1rem;
+      color: rgba(white, 0.9);
+      &::placeholder {
+        color: rgba(white, 0.6);
+      }
+    }
+  }
+}

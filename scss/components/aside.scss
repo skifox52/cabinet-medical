@@ -1,0 +1,75 @@
+@use "../utils/colors" as clr;
+@use "../utils/mixins" as mxn;
+aside {
+  height: 100vh;
+  width: 17vw;
+  background: clr.$secondary__clr;
+  color: clr.$primary__clr;
+  box-shadow: clr.$box-shadow-light;
+  ul {
+    height: 100%;
+    padding-block: 1rem;
+    .hidden__list {
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+      &.active {
+        height: auto;
+        opacity: 1;
+        pointer-events: visible;
+        li {
+          padding-left: 1rem;
+        }
+      }
+    }
+    .hidden__list__rdv {
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+      &.active {
+        height: auto;
+        opacity: 1;
+        pointer-events: visible;
+        li {
+          padding-left: 1rem;
+        }
+      }
+    }
+    li {
+      transition: background 140ms ease-in;
+      a {
+        padding: 1rem;
+        color: rgba(white, 0.95);
+        display: block;
+        font-size: 1.2rem;
+        height: 100%;
+        width: 100%;
+        &.show__hidden,
+        &.show__hidden__rdv {
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(135deg);
+            display: block;
+            height: 1rem;
+            aspect-ratio: 1;
+            border-top: 2px solid rgba(white, 0.9);
+            border-right: 2px solid rgba(white, 0.9);
+            transition: transform 700ms ease-in-out;
+          }
+          &.active {
+            &::after {
+              transform: translateY(-50%) rotate(-45deg);
+            }
+          }
+        }
+      }
+      &:hover {
+        background: clr.$secondary__clr__light;
+      }
+    }
+  }
+}

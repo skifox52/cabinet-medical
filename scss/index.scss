@@ -1,0 +1,28 @@
+@use "utils/colors" as clr;
+@use "utils/mixins" as mxn;
+@use "components/aside.scss";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: clr.$primary__clr;
+  font-family: "Rajdhani", sans-serif;
+  color: rgba(white, 0.95);
+  @include mxn.flex-center(row);
+  justify-content: space-between;
+  .dashboard {
+    height: 100%;
+    width: 100%;
+    @include mxn.flex-center(row);
+  }
+}
