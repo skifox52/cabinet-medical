@@ -13,7 +13,7 @@ body {
   height: 100vh;
   width: 100vw;
   @include mxn.flex-center(column);
-  color: clr.$secondary__clr;
+  color: rgba(white, 0.7);
   background: clr.$primary__clr;
   font-family: "Rajdhani", sans-serif;
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/aside.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/pages/getPatient.css" />
+    <title>Tous les patients</title>
+  </head>
+  <body>
+    <%- include("../components/aside")%>
+    <div class="patients">
+      <% patients.forEach(patient =>{ %>
+      <div class="patient__card">
+        <div class="card__record">
+          <span>Nom</span>
+          <p><%= patient.nom.toString().toUpperCase()%></p>
+        </div>
+        <div class="card__record">
+          <span>Prénom</span>
+          <p>
+            <%= patient.prenom.toString().charAt(0).toUpperCase() +
+            patient.prenom.toString().slice(1)%>
+          </p>
+        </div>
+        <div class="card__record">
+          <span>Sexe</span>
+          <p><%= patient.sexe%></p>
+        </div>
+        <div class="card__record">
+          <span>Age</span>
+          <p>
+            <%= new Date().toString().slice(10,15) -
+            patient.date_de_naissance.toString().slice(10,15)%>
+          </p>
+        </div>
+        <div class="button__container">
+          <a href="<%=`/patient/${patient.id}`%>" target="_blank" class="btn"
+            >Afficher</a
+          >
+          <a
+            href="<%=`/patient/modifier/${patient.id}`%>"
+            target="_blank"
+            class="btn"
+            >Modifier</a
+          >
+          <button class="btn" onclick="onDelete('<%=patient.id%>')">
+            Supprimer
+          </button>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <script>
+      function onDelete(id) {
+        const confirm = window.confirm(
+          `Vous voulez vraiment supprimer l'utilisateur ${id}`
+        )
+        if (confirm) {
+          fetch(`/patient/${id}`, { method: "DELETE" })
+            .then((res) => {
+              console.log(`User ${id} DELETED!`)
+              window.location.reload()
+            })
+            .catch((err) => {
+              console.log(err)
+              return
+            })
+        }
+      }
+    </script>
+  </body>
+</html>

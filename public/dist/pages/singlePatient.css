@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  max-width: 100vw;
+  font-family: "Rajdhani", sans-serif;
+  background: #1b1c26;
+  color: rgba(255, 255, 255, 0.9);
+}
+body .patient {
+  max-width: 40rem;
+  background: hsl(235deg, 17%, 18%);
+  height: 100%;
+  margin-inline: auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+body .patient .single__record {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.5rem 1rem;
+}
+body .patient .single__record h4 {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.3rem;
+}
+
+/*# sourceMappingURL=singlePatient.css.map */

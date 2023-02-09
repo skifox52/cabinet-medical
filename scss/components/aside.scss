@@ -2,8 +2,10 @@
 @use "../utils/mixins" as mxn;
 aside {
   height: 100vh;
+  // max-width: 17vw;
   width: 17vw;
   background: clr.$primary__clr__light;
+  font-family: "Rajdhani", sans-serif;
   ul {
     height: 100%;
     padding-block: 1rem;
@@ -42,6 +44,7 @@ aside {
         font-size: 1.2rem;
         height: 100%;
         width: 100%;
+        font-weight: 300;
         &.show__hidden,
         &.show__hidden__rdv {
           position: relative;

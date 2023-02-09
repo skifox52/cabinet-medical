@@ -34,6 +34,41 @@ class PatientModel {
     ])
     return result
   }
+  //Get all patients
+  static getAll() {
+    const query = "SELECT * FROM patient"
+    const result = db.execute(query)
+    return result
+  }
+  //Get patient by id
+  static getOnePatient(id) {
+    const query = "SELECT * FROM patient WHERE id=?"
+    const result = db.execute(query, [id])
+    return result
+  }
+  //Put patient by ID
+  static putOne(
+    id,
+    { nom, prenom, adresse, sexe, numero_telephone, group_sanguin }
+  ) {
+    const query =
+      "UPDATE patient SET nom=?,prenom=?, adresse=?,  sexe=?, numero_telephone=?, group_sanguin=? where id=?"
+    const result = db.execute(query, [
+      nom,
+      prenom,
+      adresse,
+      sexe,
+      numero_telephone,
+      group_sanguin,
+      id,
+    ])
+    return result
+  }
+  static deleteOne(id) {
+    const query = "DELETE FROM patient WHERE id=?"
+    const result = db.execute(query, [id])
+    return result
+  }
 }
 
 module.exports = PatientModel

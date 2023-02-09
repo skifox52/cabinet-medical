@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dist/pages/putPatient.css" />
+    <title>Modifier un patient</title>
+  </head>
+  <body>
+    <div class="patient">
+      <div class="single__record">
+        <h4>Identifiant</h4>
+        <h3><%= patient[0].id %></h3>
+      </div>
+      <form method="POST" action="<%=`/patient/modifier/${patient[0].id}`%>">
+      <div class="single__record">
+        <h4>Nom</h4>
+        <input type="text" name="nom" value="<%= patient[0].nom.toString()%>" />
+      </div>
+      <div class="single__record">
+        <h4>Prénom</h4>
+        <input
+          type="text"
+          name="prenom"
+          value="<%= patient[0].prenom.toString()%>"
+        />
+      </div>
+      <div class="single__record">
+        <h4>Sexe</h4>
+        <select name="sexe">
+          <option value="Femme" <% if(patient[0].sexe.toString().toLowerCase() === "femme") {%><%="selected" %><% }%>>Femme</option>
+          <option value="Homme" <% if(patient[0].sexe.toString().toLowerCase() === "homme") {%><%="selected" %><% }%>>Homme</option>
+        </select>
+      </div>
+      <div class="single__record">
+        <h4>Adresse</h4>
+        <input type="text" name="adresse" value="<%= patient[0].adresse %>">
+       
+      </div>
+      <div class="single__record">
+        <h4>Numéro de téléphone</h4>
+        <input type="number" name="tel" value="<%= patient[0].numero_telephone %>">        
+      </div>
+      <div class="single__record">
+        <h4>Groupe sanguin</h4>
+        <select name="gs">
+            <option value="O-" <% if(patient[0].group_sanguin.toString().toLowerCase() === "o-") {%><%="selected" %><% }%>>O-</option>
+            <option value="O+" <% if(patient[0].group_sanguin.toString().toLowerCase() === "o+") {%><%="selected" %><% }%>>O+</option>
+            <option value="B-" <% if(patient[0].group_sanguin.toString().toLowerCase() === "b-") {%><%="selected" %><% }%>>B-</option>
+            <option value="B+" <% if(patient[0].group_sanguin.toString().toLowerCase() === "b+") {%><%="selected" %><% }%>>B+</option>
+            <option value="A-" <% if(patient[0].group_sanguin.toString().toLowerCase() === "a-") {%><%="selected" %><% }%>>A-</option>
+            <option value="A+" <% if(patient[0].group_sanguin.toString().toLowerCase() === "a+") {%><%="selected" %><% }%>>A+</option>
+            <option value="AB-" <% if(patient[0].group_sanguin.toString().toLowerCase() === "ab-") {%><%="selected" %><% }%>>AB-</option>
+            <option value="AB+" <% if(patient[0].group_sanguin.toString().toLowerCase() === "ab+") {%><%="selected" %><% }%>>AB+</option>
+          </select>
+        </div>
+
+        <button type="submit">Modifier</button>
+    </form>
+    </div>
+  </body>
+</html>
