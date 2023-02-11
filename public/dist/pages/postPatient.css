@@ -102,7 +102,7 @@ body .register__container {
 body .register__container .register {
   margin: auto;
   height: 85%;
-  width: 60%;
+  width: 80%;
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -136,7 +136,8 @@ body .register__container .register form h1 {
 }
 body .register__container .register form input,
 body .register__container .register form button,
-body .register__container .register form select {
+body .register__container .register form select,
+body .register__container .register form textarea {
   width: 60%;
   padding: 1rem;
   outline: none;
@@ -148,7 +149,8 @@ body .register__container .register form select {
 }
 body .register__container .register form input::placeholder,
 body .register__container .register form button::placeholder,
-body .register__container .register form select::placeholder {
+body .register__container .register form select::placeholder,
+body .register__container .register form textarea::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 body .register__container .register form select {

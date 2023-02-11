@@ -26,7 +26,7 @@ body {
     .register {
       margin: auto;
       height: 85%;
-      width: 60%;
+      width: 80%;
       margin-inline: auto;
       @include mxn.flex-center(row);
       background: clr.$primary__clr__light;
@@ -52,7 +52,8 @@ body {
         }
         input,
         button,
-        select {
+        select,
+        textarea {
           width: 60%;
           padding: 1rem;
           outline: none;

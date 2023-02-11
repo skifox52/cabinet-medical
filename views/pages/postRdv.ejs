@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/pages/postPatient.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/aside.js" defer></script>
+    <title>Ajouter un Rendez-vous</title>
+  </head>
+  <body>
+    <%- include('../components/aside') %>
+    <div class="register__container">
+      <div class="register">
+        <img src="../assets/rdv.jpg" alt="Doctor" />
+        <form action="/patient" method="POST">
+          <h1>Ajouter un Rendez-vous</h1>
+          <select name="patient" required>
+            <option disabled selected hidden value="">
+              Choisissez un patient
+            </option>
+            <% patients.forEach(patient => { %>
+            <option value="<%=patient.id%>">
+              <%= patient.nom%> <%= patient.prenom%> <%})%>
+            </option>
+          </select>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            placeholder="Date de naissance..."
+            required
+          />
+          <select name="daterdv" required>
+            <option value="" selected disabled hidden>Heure rendez-vous</option>
+            <option value="9:00:00">9:00:00</option>
+            <option value="9:30:00">9:30:00</option>
+            <option value="10:00:00">10:00:00</option>
+            <option value="10:30:00">10:30:00</option>
+            <option value="11:00:00">11:00:00</option>
+            <option value="11:30:00">11:30:00</option>
+            <option value="13:00:00">13:00:00</option>
+            <option value="13:30:00">13:30:00</option>
+            <option value="14:00:00">14:00:00</option>
+            <option value="14:30:00">14:30:00</option>
+            <option value="15:00:00">15:00:00</option>
+            <option value="15:30:00">15:30:00</option>
+          </select>
+          <textarea
+            name="info"
+            cols="30"
+            rows="5"
+            placeholder="Info rendez-vous..."
+            required
+          ></textarea>
+          <button type="submit">Ajouter</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const date = document.getElementById("date")
+      date.min = new Date().toISOString().split("T")[0]
+      date.addEventListener("input", (e) => {
+        const day = new Date(e.target.value).getDay()
+        if ([5, 6].includes(day)) {
+          e.target.value = ""
+          return alert("Indisponible les week end! Choisissez un autre jour")
+        }
+      })
+    </script>
+  </body>
+</html>
