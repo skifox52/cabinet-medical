@@ -5,7 +5,7 @@ const PatientModel = require("../models/PatientModel")
 exports.getAllRdv = async (req, res) => {
   try {
     const [rdv, _] = await RDVModel.getAllRdv()
-    res.status(200).render("getRdv", { rdv })
+    res.status(200).render("pages/getRdv", { rdv })
   } catch (err) {
     res.status(400)
     console.error(err)
@@ -20,8 +20,9 @@ exports.getPostForm = async (req, res) => {
 exports.postRdv = async (req, res) => {
   try {
     console.log(req.body)
-    // const newRdv = new RDVModel(req.body)
-    // await newRdv.save()
+    const { patient, date, heure } = req.body
+    const newRdv = new RDVModel(patient, date, heure)
+    newRdv.save()
     res.status(201).redirect("/rdv/all")
   } catch (err) {
     res.status(400)

@@ -1,0 +1,67 @@
+@use "../utils/colors" as clr;
+@use "../utils/mixins" as mxn;
+@use "../components/aside.scss";
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+::-webkit-scrollbar {
+  background: rgba(black, 1);
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: clr.$primary__clr__light;
+}
+body {
+  background: clr.$primary__clr;
+  font-family: "Rajdhani", sans-serif;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  .rdv__container {
+    padding: 1rem;
+    width: 100%;
+    min-height: 100%;
+    @include mxn.flex-center(column);
+    justify-content: flex-start;
+    gap: 1rem;
+    .single__rdv {
+      color: rgba(white, 0.9);
+      background: clr.$primary__clr__light;
+      width: 100%;
+      @include mxn.flex-center(row);
+      justify-content: space-between;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.4rem;
+      box-shadow: clr.$box-shadow-dark;
+      border: 1px solid rgba(white, 0.1);
+      svg {
+        fill: rgba(white, 0.4);
+        height: 2.5rem;
+        aspect-ratio: 1/2;
+        cursor: pointer;
+        &:hover {
+          fill: #c60000;
+        }
+      }
+      .inner__container {
+        @include mxn.flex-center(column);
+        gap: 0.3rem;
+        span {
+          color: rgba(white, 0.4);
+        }
+        p {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}

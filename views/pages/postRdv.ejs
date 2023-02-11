@@ -19,7 +19,7 @@
     <div class="register__container">
       <div class="register">
         <img src="../assets/rdv.jpg" alt="Doctor" />
-        <form action="/patient" method="POST">
+        <form action="/rdv" method="POST">
           <h1>Ajouter un Rendez-vous</h1>
           <select name="patient" required>
             <option disabled selected hidden value="">
@@ -37,7 +37,7 @@
             placeholder="Date de naissance..."
             required
           />
-          <select name="daterdv" required>
+          <select name="heure" required>
             <option value="" selected disabled hidden>Heure rendez-vous</option>
             <option value="9:00:00">9:00:00</option>
             <option value="9:30:00">9:30:00</option>
@@ -52,13 +52,6 @@
             <option value="15:00:00">15:00:00</option>
             <option value="15:30:00">15:30:00</option>
           </select>
-          <textarea
-            name="info"
-            cols="30"
-            rows="5"
-            placeholder="Info rendez-vous..."
-            required
-          ></textarea>
           <button type="submit">Ajouter</button>
         </form>
       </div>

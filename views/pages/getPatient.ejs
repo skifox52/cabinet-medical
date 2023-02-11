@@ -17,7 +17,20 @@
   <body>
     <%- include("../components/aside")%>
     <div class="patients">
-      <% patients.forEach(patient =>{ %>
+      <% if(patients.length === 0) {%>
+      <h1
+        style="
+          width: 100%;
+          min-height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        "
+      >
+        Pas de patients
+      </h1>
+      <%}%> <% patients.forEach(patient =>{ %>
       <div class="patient__card">
         <div class="card__record">
           <span>Nom</span>
