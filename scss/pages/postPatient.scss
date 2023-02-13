@@ -26,7 +26,7 @@ body {
     .register {
       margin: auto;
       height: 90%;
-      width: 90%;
+      width: 95%;
       margin-inline: auto;
       @include mxn.flex-center(row);
       background: clr.$primary__clr__light;
@@ -34,11 +34,17 @@ body {
       border-radius: 5rem;
       overflow: hidden;
       box-shadow: clr.$box-shadow-light;
+      @include mxn.sm {
+        border-radius: 1rem;
+      }
       img {
         width: 50%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+        @include mxn.md {
+          display: none;
+        }
       }
       form {
         @include mxn.flex-center(column);
@@ -46,12 +52,28 @@ body {
         padding-block: 4rem;
         min-height: 100%;
         width: 50%;
+        @include mxn.md {
+          width: 80%;
+          font-size: 0.8rem;
+        }
+        @include mxn.sm {
+          width: 100%;
+        }
+        @include mxn.xs {
+          font-size: 0.6rem;
+        }
         h1 {
           font-weight: 300;
           letter-spacing: 1px;
         }
         .form__control {
           width: 70%;
+          @include mxn.sm {
+            width: 80%;
+          }
+          @include mxn.xs {
+            width: 95%;
+          }
           @include mxn.flex-center(column);
           margin-bottom: 1rem;
           &:last-of-type {
@@ -74,6 +96,7 @@ body {
             border-radius: 5px;
             font-size: 1.1rem;
             color: rgba(white, 0.9);
+
             &::placeholder {
               color: rgba(white, 0.6);
             }

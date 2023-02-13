@@ -29,16 +29,47 @@ body {
     justify-content: start;
     .chart__container {
       width: 100%;
-      height: 50%;
+      max-height: 50%;
       @include mxn.flex-center(row);
       justify-content: space-between;
       .chart__one,
       .chart__two {
         height: 100%;
         width: 50%;
-        canvas {
-          height: 100%;
-          width: 100%;
+      }
+
+      .chart__two {
+        #myChart__one,
+        #myChart__two {
+          height: 20rem !important;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .card__container {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      .card {
+        width: 40%;
+        height: 80%;
+        background: clr.$primary__clr__light;
+        color: rgba(white, 0.7);
+        border: 1px solid rgba(white, 0.4);
+        box-shadow: clr.$box-shadow-dark;
+        @include mxn.flex-center(column);
+        justify-content: space-around;
+        border-radius: 2rem;
+        margin-inline: auto;
+        h1 {
+          color: white;
+          font-size: 5rem;
         }
       }
     }

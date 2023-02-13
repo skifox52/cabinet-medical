@@ -42,9 +42,20 @@ body {
       border-radius: 0.4rem;
       box-shadow: clr.$box-shadow-dark;
       border: 1px solid rgba(white, 0.1);
+      @include mxn.md {
+        font-size: 0.8rem;
+      }
+      @include mxn.sm {
+        font-size: 0.6rem;
+        padding: 0.7em 1em;
+      }
+      @include mxn.xs {
+        font-size: 0.5rem;
+        padding: 0.7em 1em;
+      }
       svg {
         fill: rgba(white, 0.4);
-        height: 2.5rem;
+        height: 2.5em;
         aspect-ratio: 1/2;
         cursor: pointer;
         &:hover {
@@ -53,13 +64,13 @@ body {
       }
       .inner__container {
         @include mxn.flex-center(column);
-        gap: 0.3rem;
+        gap: 0.3em;
         span {
           color: rgba(white, 0.4);
         }
         p {
           font-weight: 600;
-          font-size: 1.1rem;
+          font-size: 1.1em;
         }
       }
     }

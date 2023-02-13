@@ -2,10 +2,18 @@
 @use "../utils/mixins" as mxn;
 aside {
   height: 100vh;
-  // max-width: 17vw;
   width: 17vw;
   background: clr.$primary__clr__light;
   font-family: "Rajdhani", sans-serif;
+  @include mxn.xl {
+    width: 20vw;
+  }
+  @include mxn.md {
+    width: 25vw;
+  }
+  @include mxn.sm {
+    width: 40vw;
+  }
   ul {
     height: 100%;
     padding-block: 1rem;
@@ -42,6 +50,16 @@ aside {
         color: rgba(white, 0.95);
         display: block;
         font-size: 1.2rem;
+        @include mxn.lg {
+          font-size: 1rem;
+        }
+        @include mxn.sm {
+          padding: 1rem 0 1rem 0.5rem;
+        }
+        @include mxn.xs {
+          padding: 1rem 0 1rem 0.4rem;
+          font-size: 0.7rem;
+        }
         height: 100%;
         width: 100%;
         font-weight: 300;
@@ -60,6 +78,12 @@ aside {
             border-top: 2px solid rgba(white, 0.9);
             border-right: 2px solid rgba(white, 0.9);
             transition: transform 700ms ease-in-out;
+            @include mxn.sm {
+              border-top: 1px solid rgba(white, 0.9);
+              border-right: 1px solid rgba(white, 0.9);
+              right: 1rem;
+              height: 0.6rem;
+            }
           }
           &.active {
             &::after {

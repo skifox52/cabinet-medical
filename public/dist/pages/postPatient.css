@@ -4,6 +4,21 @@ aside {
   background: hsl(235deg, 17%, 18%);
   font-family: "Rajdhani", sans-serif;
 }
+@media (max-width: 1500px) {
+  aside {
+    width: 20vw;
+  }
+}
+@media (max-width: 1024px) {
+  aside {
+    width: 25vw;
+  }
+}
+@media (max-width: 825px) {
+  aside {
+    width: 40vw;
+  }
+}
 aside ul {
   height: 100%;
   padding-block: 1rem;
@@ -46,6 +61,22 @@ aside ul li a {
   width: 100%;
   font-weight: 300;
 }
+@media (max-width: 1250px) {
+  aside ul li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 825px) {
+  aside ul li a {
+    padding: 1rem 0 1rem 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  aside ul li a {
+    padding: 1rem 0 1rem 0.4rem;
+    font-size: 0.7rem;
+  }
+}
 aside ul li a.show__hidden, aside ul li a.show__hidden__rdv {
   position: relative;
 }
@@ -61,6 +92,14 @@ aside ul li a.show__hidden::after, aside ul li a.show__hidden__rdv::after {
   border-top: 2px solid rgba(255, 255, 255, 0.9);
   border-right: 2px solid rgba(255, 255, 255, 0.9);
   transition: transform 700ms ease-in-out;
+}
+@media (max-width: 825px) {
+  aside ul li a.show__hidden::after, aside ul li a.show__hidden__rdv::after {
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.9);
+    right: 1rem;
+    height: 0.6rem;
+  }
 }
 aside ul li a.show__hidden.active::after, aside ul li a.show__hidden__rdv.active::after {
   transform: translateY(-50%) rotate(-45deg);
@@ -102,7 +141,7 @@ body .register__container {
 body .register__container .register {
   margin: auto;
   height: 90%;
-  width: 90%;
+  width: 95%;
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -114,11 +153,21 @@ body .register__container .register {
   overflow: hidden;
   box-shadow: 0px 0px 25px black;
 }
+@media (max-width: 825px) {
+  body .register__container .register {
+    border-radius: 1rem;
+  }
+}
 body .register__container .register img {
   width: 50%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+@media (max-width: 1024px) {
+  body .register__container .register img {
+    display: none;
+  }
 }
 body .register__container .register form {
   display: flex;
@@ -129,6 +178,22 @@ body .register__container .register form {
   padding-block: 4rem;
   min-height: 100%;
   width: 50%;
+}
+@media (max-width: 1024px) {
+  body .register__container .register form {
+    width: 80%;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 825px) {
+  body .register__container .register form {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  body .register__container .register form {
+    font-size: 0.6rem;
+  }
 }
 body .register__container .register form h1 {
   font-weight: 300;
@@ -141,6 +206,16 @@ body .register__container .register form .form__control {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 1rem;
+}
+@media (max-width: 825px) {
+  body .register__container .register form .form__control {
+    width: 80%;
+  }
+}
+@media (max-width: 480px) {
+  body .register__container .register form .form__control {
+    width: 95%;
+  }
 }
 body .register__container .register form .form__control:last-of-type {
   margin-bottom: 0;

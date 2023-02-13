@@ -1,6 +1,39 @@
+$breakpoints: (
+  "xs": 480px,
+  "sm": 825px,
+  "md": 1024px,
+  "lg": 1250px,
+  "xl": 1500px,
+);
+
 @mixin flex-center($direction) {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: $direction;
+}
+@mixin xs {
+  @media (max-width: map-get($breakpoints,"xs")) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (max-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+@mixin md {
+  @media (max-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (max-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (max-width: map-get($breakpoints, "xl")) {
+    @content;
+  }
 }

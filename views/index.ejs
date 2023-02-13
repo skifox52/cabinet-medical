@@ -29,13 +29,26 @@
           <div id="myChart__two"></div>
         </div>
       </div>
+      <div class="card__container">
+        <div class="card rdv__card"></div>
+        <div class="card patient__card"></div>
+        <div class="card homme__card"></div>
+        <div class="card femme__card"></div>
+      </div>
     </div>
 
     <script>
       ;(async () => {
         const response = await fetch("/dashboardd")
         const data = await response.json()
-
+        document.querySelector(".rdv__card").innerHTML = `
+          <h2>Nombre de rendez-vous</h2>
+          <h1>${data[1][0]["rdvCount"]}</h1>
+        `
+        document.querySelector(".patient__card").innerHTML = `
+          <h2>Nombre de patients</h2>
+          <h1>${data[0][0]["patientCount"]}</h1>
+        `
         var options = {
           series: [
             {
@@ -53,7 +66,7 @@
             },
           ],
           chart: {
-            height: 350,
+            height: "100%",
             type: "bar",
           },
           plotOptions: {
@@ -92,10 +105,18 @@
         const response1 = await fetch("/dashboardd/sexe")
         const data1 = await response1.json()
         console.log(data1[0][0]["homme"])
+        document.querySelector(".homme__card").innerHTML = `
+          <h2>Nombre de femmes</h2>
+          <h1>${data1[1][0]["femme"]}</h1>
+        `
+        document.querySelector(".femme__card").innerHTML = `
+          <h2>Nombre d'hommes</h2>
+          <h1>${data1[0][0]["homme"]}</h1>
+        `
         var options = {
           series: [data1[0][0]["homme"], data1[1][0]["femme"]],
           chart: {
-            width: "60%",
+            width: "55%",
             type: "pie",
           },
           labels: ["Homme", "Femme"],

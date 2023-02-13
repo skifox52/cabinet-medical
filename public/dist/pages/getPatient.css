@@ -4,6 +4,21 @@ aside {
   background: hsl(235deg, 17%, 18%);
   font-family: "Rajdhani", sans-serif;
 }
+@media (max-width: 1500px) {
+  aside {
+    width: 20vw;
+  }
+}
+@media (max-width: 1024px) {
+  aside {
+    width: 25vw;
+  }
+}
+@media (max-width: 825px) {
+  aside {
+    width: 40vw;
+  }
+}
 aside ul {
   height: 100%;
   padding-block: 1rem;
@@ -46,6 +61,22 @@ aside ul li a {
   width: 100%;
   font-weight: 300;
 }
+@media (max-width: 1250px) {
+  aside ul li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 825px) {
+  aside ul li a {
+    padding: 1rem 0 1rem 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  aside ul li a {
+    padding: 1rem 0 1rem 0.4rem;
+    font-size: 0.7rem;
+  }
+}
 aside ul li a.show__hidden, aside ul li a.show__hidden__rdv {
   position: relative;
 }
@@ -61,6 +92,14 @@ aside ul li a.show__hidden::after, aside ul li a.show__hidden__rdv::after {
   border-top: 2px solid rgba(255, 255, 255, 0.9);
   border-right: 2px solid rgba(255, 255, 255, 0.9);
   transition: transform 700ms ease-in-out;
+}
+@media (max-width: 825px) {
+  aside ul li a.show__hidden::after, aside ul li a.show__hidden__rdv::after {
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.9);
+    right: 1rem;
+    height: 0.6rem;
+  }
 }
 aside ul li a.show__hidden.active::after, aside ul li a.show__hidden__rdv.active::after {
   transform: translateY(-50%) rotate(-45deg);
