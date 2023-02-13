@@ -25,8 +25,8 @@ body {
     @include mxn.flex-center(row);
     .register {
       margin: auto;
-      height: 85%;
-      width: 80%;
+      height: 90%;
+      width: 90%;
       margin-inline: auto;
       @include mxn.flex-center(row);
       background: clr.$primary__clr__light;
@@ -44,37 +44,51 @@ body {
         @include mxn.flex-center(column);
         justify-content: space-between;
         padding-block: 4rem;
-        height: 100%;
+        min-height: 100%;
         width: 50%;
         h1 {
           font-weight: 300;
           letter-spacing: 1px;
         }
-        input,
-        button,
-        select {
-          width: 60%;
-          padding: 1rem;
-          outline: none;
-          border: 1px solid clr.$primary__clr;
-          background: rgba(white, 0.02);
-          border-radius: 5px;
-          font-size: 1.1rem;
-          color: rgba(white, 0.9);
-          &::placeholder {
-            color: rgba(white, 0.6);
+        .form__control {
+          width: 70%;
+          @include mxn.flex-center(column);
+          margin-bottom: 1rem;
+          &:last-of-type {
+            margin-bottom: 0;
           }
-        }
-        select {
-          background: clr.$primary__clr__light;
-        }
-        button {
-          background: clr.$primary__clr;
-          cursor: pointer;
-          transition: all 200ms ease-in;
-          &:hover {
+          span {
+            font-size: 1.1rem;
+            width: 100%;
+            color: rgba(white, 0.4);
+            margin-bottom: 0.2rem;
+          }
+          input,
+          button,
+          select {
+            width: 100%;
+            padding: 1rem;
+            outline: none;
+            border: 1px solid clr.$primary__clr;
+            background: rgba(white, 0.02);
+            border-radius: 5px;
+            font-size: 1.1rem;
+            color: rgba(white, 0.9);
+            &::placeholder {
+              color: rgba(white, 0.6);
+            }
+          }
+          select {
             background: clr.$primary__clr__light;
-            transform: translateY(1px);
+          }
+          button {
+            background: clr.$primary__clr;
+            cursor: pointer;
+            transition: all 200ms ease-in;
+            &:hover {
+              background: clr.$primary__clr__light;
+              transform: translateY(1px);
+            }
           }
         }
       }

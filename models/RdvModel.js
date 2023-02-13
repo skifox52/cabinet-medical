@@ -23,7 +23,26 @@ class RDVModel {
   //Get all rdv
   static getAllRdv() {
     const query =
-      "SELECT rdv.date_rdv, rdv.heure_rdv,rdv.date_prise_rdv, patient.nom, patient.prenom FROM rdv, patient where rdv.id_patient=patient.id"
+      "SELECT rdv.id,rdv.date_rdv, rdv.heure_rdv,rdv.date_prise_rdv, patient.nom, patient.prenom FROM rdv, patient where rdv.id_patient=patient.id"
+    const result = db.execute(query)
+    return result
+  }
+  //Get Avaible rdvs
+  static getAvaibleRdv() {
+    const query =
+      "SELECT date_rdv,group_concat(heure_rdv) as heureArray FROM rdv group by date_rdv"
+    const result = db.execute(query)
+    return result
+  }
+  //Delete rendez-vous
+  static deleteRdv(id) {
+    const query = `DELETE FROM rdv WHERE id='${id}'`
+    const result = db.execute(query)
+    return result
+  }
+  //Count rendez-vous
+  static count() {
+    const query = "SELECT COUNT(*) as rdvCount from rdv"
     const result = db.execute(query)
     return result
   }

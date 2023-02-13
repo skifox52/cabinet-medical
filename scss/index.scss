@@ -23,6 +23,24 @@ body {
   .dashboard {
     height: 100%;
     width: 100%;
-    @include mxn.flex-center(row);
+    padding: 1rem;
+    @include mxn.flex-center(column);
+    align-items: start;
+    justify-content: start;
+    .chart__container {
+      width: 100%;
+      height: 50%;
+      @include mxn.flex-center(row);
+      justify-content: space-between;
+      .chart__one,
+      .chart__two {
+        height: 100%;
+        width: 50%;
+        canvas {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
   }
 }

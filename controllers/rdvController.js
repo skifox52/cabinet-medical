@@ -14,12 +14,12 @@ exports.getAllRdv = async (req, res) => {
 //Get rdv POST Form
 exports.getPostForm = async (req, res) => {
   const [patients, _] = await PatientModel.getAll()
-  res.status(200).render("pages/postRdv", { patients })
+  const [avr, __] = await RDVModel.getAvaibleRdv()
+  res.status(200).render("pages/postRdv", { patients, avr })
 }
 //Post a rdv
 exports.postRdv = async (req, res) => {
   try {
-    console.log(req.body)
     const { patient, date, heure } = req.body
     const newRdv = new RDVModel(patient, date, heure)
     newRdv.save()
@@ -28,4 +28,10 @@ exports.postRdv = async (req, res) => {
     res.status(400)
     console.error(err)
   }
+}
+//Delete a rdv
+exports.deleteRdv = async (req, res) => {
+  const { id } = req.params
+  await RDVModel.deleteRdv(id)
+  res.status(204).end()
 }

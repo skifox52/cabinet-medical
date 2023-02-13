@@ -21,42 +21,57 @@
         <img src="../assets/rdv.jpg" alt="Doctor" />
         <form action="/rdv" method="POST">
           <h1>Ajouter un Rendez-vous</h1>
-          <select name="patient" required>
-            <option disabled selected hidden value="">
-              Choisissez un patient
-            </option>
-            <% patients.forEach(patient => { %>
-            <option value="<%=patient.id%>">
-              <%= patient.nom%> <%= patient.prenom%> <%})%>
-            </option>
-          </select>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            placeholder="Date de naissance..."
-            required
-          />
-          <select name="heure" required>
-            <option value="" selected disabled hidden>Heure rendez-vous</option>
-            <option value="9:00:00">9:00:00</option>
-            <option value="9:30:00">9:30:00</option>
-            <option value="10:00:00">10:00:00</option>
-            <option value="10:30:00">10:30:00</option>
-            <option value="11:00:00">11:00:00</option>
-            <option value="11:30:00">11:30:00</option>
-            <option value="13:00:00">13:00:00</option>
-            <option value="13:30:00">13:30:00</option>
-            <option value="14:00:00">14:00:00</option>
-            <option value="14:30:00">14:30:00</option>
-            <option value="15:00:00">15:00:00</option>
-            <option value="15:30:00">15:30:00</option>
-          </select>
-          <button type="submit">Ajouter</button>
+          <div class="form__control">
+            <span>Patient</span>
+            <select name="patient" required>
+              <option disabled selected hidden value="">
+                Choisissez un patient
+              </option>
+              <% patients.forEach(patient => { %>
+              <option value="<%=patient.id%>">
+                <%= patient.nom%> <%= patient.prenom%> <%})%>
+              </option>
+            </select>
+          </div>
+          <div class="form__control">
+            <span>Date du rendez-vous</span>
+            <input
+              type="date"
+              name="date"
+              id="date"
+              placeholder="Date de rendez-vous..."
+              oninput="onInputHandler('<%=avr[0]%>')"
+              required
+            />
+          </div>
+          <div class="form__control">
+            <span>Heure du rendez-vous</span>
+            <select name="heure" required>
+              <option value="" selected disabled hidden>
+                Heure rendez-vous
+              </option>
+              <option value="9:00:00">9:00:00</option>
+              <option value="9:30:00">9:30:00</option>
+              <option value="10:00:00">10:00:00</option>
+              <option value="10:30:00">10:30:00</option>
+              <option value="11:00:00">11:00:00</option>
+              <option value="11:30:00">11:30:00</option>
+              <option value="13:00:00">13:00:00</option>
+              <option value="13:30:00">13:30:00</option>
+              <option value="14:00:00">14:00:00</option>
+              <option value="14:30:00">14:30:00</option>
+              <option value="15:00:00">15:00:00</option>
+              <option value="15:30:00">15:30:00</option>
+            </select>
+          </div>
+          <div class="form__control">
+            <button type="submit">Ajouter</button>
+          </div>
         </form>
       </div>
     </div>
     <script>
+      //Handeling time
       const date = document.getElementById("date")
       date.min = new Date().toISOString().split("T")[0]
       date.addEventListener("input", (e) => {

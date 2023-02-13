@@ -69,6 +69,19 @@ class PatientModel {
     const result = db.execute(query, [id])
     return result
   }
+  static count() {
+    const query = "SELECT COUNT(*) as patientCount from patient"
+    const result = db.execute(query)
+    return result
+  }
+  //get homme/femme
+  static getSexeCount() {
+    const query1 = "SELECT COUNT(*) as homme from patient where sexe='homme'"
+    const query2 = "SELECT COUNT(*) as femme from patient where sexe='femme'"
+    const result1 = db.execute(query1)
+    const result2 = db.execute(query2)
+    return [result1, result2]
+  }
 }
 
 module.exports = PatientModel

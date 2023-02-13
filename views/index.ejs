@@ -11,13 +11,115 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="dist/index.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.37.0/apexcharts.min.js"
+      defer
+    ></script>
     <script src="js/aside.js" defer></script>
     <title>Dashboard</title>
   </head>
   <body>
     <%- include('components/aside') %>
     <div class="dashboard">
-      <h1>Dashboard</h1>
+      <div class="chart__container">
+        <div class="chart__one">
+          <div id="myChart__one"></div>
+        </div>
+        <div class="chart__two">
+          <div id="myChart__two"></div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      ;(async () => {
+        const response = await fetch("/dashboardd")
+        const data = await response.json()
+
+        var options = {
+          series: [
+            {
+              name: "Actual",
+              data: [
+                {
+                  x: "Patient commpte",
+                  y: data[0][0]["patientCount"],
+                },
+                {
+                  x: "Rendez-vous compte",
+                  y: data[1][0]["rdvCount"],
+                },
+              ],
+            },
+          ],
+          chart: {
+            height: 350,
+            type: "bar",
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            },
+          },
+          colors: ["#00E396"],
+          dataLabels: {
+            formatter: function (val, opt) {
+              const goals =
+                opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
+                  .goals
+
+              if (goals && goals.length) {
+                return `${val} / ${goals[0].value}`
+              }
+              return val
+            },
+          },
+          legend: {
+            show: true,
+            showForSingleSeries: true,
+            customLegendItems: ["Actual"],
+            markers: {
+              fillColors: ["#00E396", "#775DD0"],
+            },
+          },
+        }
+
+        var chart = new ApexCharts(
+          document.querySelector("#myChart__one"),
+          options
+        )
+        chart.render()
+        const response1 = await fetch("/dashboardd/sexe")
+        const data1 = await response1.json()
+        console.log(data1[0][0]["homme"])
+        var options = {
+          series: [data1[0][0]["homme"], data1[1][0]["femme"]],
+          chart: {
+            width: "60%",
+            type: "pie",
+          },
+          labels: ["Homme", "Femme"],
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
+          ],
+        }
+
+        var chart = new ApexCharts(
+          document.querySelector("#myChart__two"),
+          options
+        )
+        chart.render()
+      })()
+    </script>
   </body>
 </html>
